@@ -279,7 +279,18 @@ table.ledger td.blank { background: repeating-linear-gradient(135deg, transparen
 .explain.ok { border-color: var(--ok-line); background: var(--ok-bg); }
 .explain.bad { border-color: var(--bad-line); background: var(--bad-bg); }
 .explain b { font-weight: 600; }
-.exp-text { margin-top: 6px; white-space: pre-line; line-height: 1.75; font-variant-numeric: tabular-nums; }
+.exp-text { margin-top: 6px; line-height: 1.75; font-variant-numeric: tabular-nums; }
+.exp-text p.exp-p { margin: 4px 0; }
+.exp-text h3.exp-h { font-size: 15px; font-weight: 700; margin: 14px 0 6px; color: var(--accent); }
+.exp-text h4.exp-h { font-size: 14.5px; font-weight: 600; margin: 12px 0 4px; }
+.exp-text table.exp-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13.5px; }
+.exp-text table.exp-table th { background: var(--surface-2); font-weight: 600; padding: 6px 10px; border: 1px solid var(--line); text-align: left; }
+.exp-text table.exp-table td { padding: 6px 10px; border: 1px solid var(--line); }
+.exp-text ul.exp-list { margin: 6px 0; padding-left: 20px; }
+.exp-text ul.exp-list li { margin: 3px 0; }
+.exp-text blockquote.exp-quote { margin: 8px 0; padding: 8px 14px; border-left: 3px solid var(--accent); background: var(--accent-bg); border-radius: 0 8px 8px 0; font-size: 14px; }
+.exp-text code.exp-code { font-family: var(--mono); font-size: 13px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+.exp-text strong { font-weight: 700; color: var(--accent); }
 .explain { background-image: none; }
 
 /* 메모 */

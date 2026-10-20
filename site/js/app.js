@@ -5,7 +5,7 @@
   var EXAMS = window.EXAMS || [];
   /* 기능 스위치: false 인 기능은 화면에서만 숨기고 코드와 데이터는 그대로 둔다. 다시 쓰려면 true 로 바꾼다. */
   var FEATURES = {
-    explanations: false, // 해설 문장 (검수 전이라 보류)
+    explanations: true, // 해설 문장
     planner: false,      // 플래너 홈 (D-day, 주간 목표, 오늘 할 일)
     memos: false,        // 내 메모 모아보기 (풀이 화면의 메모는 그대로 사용 가능)
     settings: false      // 설정 (시험일, 화면 모드, 백업/초기화)
@@ -83,6 +83,65 @@
   function saveSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 350); }
 
   /* ───────── 유틸 ───────── */
+  /* 간단한 마크다운 → HTML 변환 (해설용) */
+  function renderMd(s) {
+    if (!s) return '';
+    var lines = String(s).split('\n');
+    var out = [], inTable = false, inList = false;
+    for (var i = 0; i < lines.length; i++) {
+      var L = lines[i];
+      /* 빈 줄 */
+      if (!L.trim()) {
+        if (inTable) { out.push('</table>'); inTable = false; }
+        if (inList) { out.push('</ul>'); inList = false; }
+        out.push('');
+        continue;
+      }
+      /* 표: | col | col | */
+      if (/^\|/.test(L.trim())) {
+        var cells = L.trim().replace(/^\||\|$/g, '').split('|').map(function(c){ return c.trim(); });
+        /* 구분선 |---|---| → 무시 */
+        if (/^[\s|:-]+$/.test(L.trim().replace(/\|/g,''))) continue;
+        if (!inTable) { out.push('<table class="exp-table">'); inTable = true; }
+        var tag = (!inTable || out[out.length - 1] === '<table class="exp-table">') ? 'th' : 'td';
+        /* 첫 행 = 헤더, 나머지 = body */
+        var rowIdx = 0;
+        for (var k = out.length - 1; k >= 0; k--) {
+          if (out[k] === '<table class="exp-table">') break;
+          if (/<tr>/.test(out[k])) rowIdx++;
+        }
+        tag = rowIdx === 0 ? 'th' : 'td';
+        out.push('<tr>' + cells.map(function(c){ return '<' + tag + '>' + inlineMd(c) + '</' + tag + '>'; }).join('') + '</tr>');
+        continue;
+      }
+      if (inTable) { out.push('</table>'); inTable = false; }
+      /* 리스트: · 또는 - 시작 */
+      if (/^[·\-•]\s/.test(L.trim())) {
+        if (!inList) { out.push('<ul class="exp-list">'); inList = true; }
+        out.push('<li>' + inlineMd(L.trim().replace(/^[·\-•]\s*/, '')) + '</li>');
+        continue;
+      }
+      if (inList) { out.push('</ul>'); inList = false; }
+      /* 제목: ### 또는 ## */
+      if (/^###\s/.test(L.trim())) { out.push('<h4 class="exp-h">' + inlineMd(L.trim().replace(/^###\s*/, '')) + '</h4>'); continue; }
+      if (/^##\s/.test(L.trim())) { out.push('<h3 class="exp-h">' + inlineMd(L.trim().replace(/^##\s*/, '')) + '</h3>'); continue; }
+      /* 인용: > */
+      if (/^>\s?/.test(L.trim())) { out.push('<blockquote class="exp-quote">' + inlineMd(L.trim().replace(/^>\s?/, '')) + '</blockquote>'); continue; }
+      /* 일반 텍스트 */
+      out.push('<p class="exp-p">' + inlineMd(L.trim()) + '</p>');
+    }
+    if (inTable) out.push('</table>');
+    if (inList) out.push('</ul>');
+    return out.join('\n');
+  }
+  /* 인라인 마크다운: **볼드**, 숫자 강조, ₩기호 */
+  function inlineMd(s) {
+    s = esc(s);
+    s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/`(.+?)`/g, '<code class="exp-code">$1</code>');
+    return s;
+  }
+
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -1230,7 +1289,7 @@
       html += '<div class="explain ' + (sel == null ? '' : (right ? 'ok' : 'bad')) + '"><b>' +
         (sel == null ? '정답은 ' + CIRC[q.answer - 1] + '번이에요' : (right ? '정답이에요' : '아쉬워요. 정답은 ' + CIRC[q.answer - 1] + '번이에요')) + '</b>' +
         (FEATURES.explanations ? (q.explanation && q.explanationStatus === 'draft' ? '<span class="pill warn" style="margin-left:8px" title="AI가 작성한 초안이에요. 검수 전이라 틀린 내용이 있을 수 있어요.">AI 초안 · 검수 전</span>' : '') +
-          '<div class="exp-text">' + (q.explanation ? esc(q.explanation) : '<span class="muted">이 문제의 해설은 아직 준비 중이에요. 풀이 메모에 내 풀이를 남겨두세요.</span>') + '</div>' : '') +
+          '<div class="exp-text">' + (q.explanation ? renderMd(q.explanation) : '<span class="muted">이 문제의 해설은 아직 준비 중이에요. 풀이 메모에 내 풀이를 남겨두세요.</span>') + '</div>' : '') +
         '</div>';
       if (view.mode === 'solve' && a.mode === 'practice') {
         html += '<div style="margin-top:10px"><button class="btn" data-act="retry-q">' + IC.repeat + '이 문제 다시 풀기</button></div>';
