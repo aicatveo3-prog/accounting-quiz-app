@@ -1,0 +1,16 @@
+rules_version = '2';
+
+// 내 문서(users/{내 uid})만 나만 읽고 쓸 수 있어요. 다른 문서는 전부 막혀 있어요.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['rev', 'data', 'updatedAt'])
+        && request.resource.data.rev is number
+        && request.resource.data.data is string
+        && request.resource.data.data.size() < 900000;
+      allow delete: if false;
+    }
+  }
+}
