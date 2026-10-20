@@ -220,8 +220,10 @@ button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px sol
 .pane { min-height: 0; }
 /* 기본 상태: 문제만 가운데에 적당한 폭으로 */
 .qpane { flex: 1 1 auto; width: 100%; max-width: 720px; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 28px 24px; }
+.solve.memo-open .qpane { max-width: 580px; }
 /* 해설이 열리면 문제를 38%로 줄이고 max-width 해제 */
 .solve.exp-open .qpane { flex: 0 0 auto; width: 38%; min-width: 320px; max-width: none; }
+.solve.exp-open.memo-open .qpane { width: 38%; min-width: 320px; max-width: none; }
 .epane { display: none; flex-direction: column; flex: 1 1 0; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; }
 .epane-inner { line-height: 1.7; }
 .solve.exp-open .epane { display: flex; }
