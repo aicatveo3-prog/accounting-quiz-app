@@ -218,9 +218,14 @@ button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px sol
 /* PC: 가운데 문제 카드 + (열려 있으면) 오른쪽 메모 패널. 화면 전체가 하나로 스크롤되고 메모는 따라다닌다 */
 .workspace { display: flex; justify-content: center; align-items: flex-start; gap: 16px; padding: 22px 16px 48px; overflow-y: auto; min-height: 0; }
 .pane { min-height: 0; }
-.qpane { flex: 1 1 auto; width: 100%; max-width: 720px; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 28px 24px; }
-.solve.memo-open .qpane { max-width: 580px; }
-.mpane { display: none; flex-direction: column; gap: 10px; flex: none; width: 340px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; position: sticky; top: 22px; height: min(620px, calc(100vh - 200px)); }
+.qpane { flex: 0 1 auto; width: 100%; max-width: 520px; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 28px 24px; }
+.solve.memo-open .qpane { max-width: 480px; }
+.solve.exp-open .qpane { max-width: 440px; }
+.solve.exp-open.memo-open .qpane { max-width: 380px; }
+.epane { display: none; flex-direction: column; flex: 1 1 auto; max-width: 420px; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; position: sticky; top: 22px; max-height: calc(100vh - 200px); overflow-y: auto; }
+.epane-inner { line-height: 1.7; }
+.solve.exp-open .epane { display: flex; }
+.mpane { display: none; flex-direction: column; gap: 10px; flex: none; width: 300px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; position: sticky; top: 22px; height: min(620px, calc(100vh - 200px)); }
 .solve.memo-open .mpane { display: flex; }
 .qhead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
 .qhead .qprog { margin-left: auto; }
@@ -297,6 +302,8 @@ table.ledger td.blank { background: repeating-linear-gradient(135deg, transparen
 :root[data-theme="dark"] .exp-text table.exp-table th { background: var(--surface-2); }
 :root[data-theme="dark"] .exp-text blockquote.exp-quote { background: var(--surface-2); }
 :root[data-theme="dark"] .exp-text code.exp-code { background: var(--surface-2); }
+/* PC에서 인라인 해설은 숨김 (epane으로 표시) */
+.exp-inline { display: none; margin-top: 12px; }
 .explain { background-image: none; }
 
 /* 메모 */
@@ -403,7 +410,10 @@ table.ledger td.blank { background: repeating-linear-gradient(135deg, transparen
   .wrow .wacts { width: 100%; }
   /* 모바일: 카드 테두리 없이 화면 폭을 쓰고, 메모는 아래에서 올라오는 서랍 */
   .workspace { display: block; position: relative; overflow-y: auto; padding: 0; }
-  .qpane, .solve.memo-open .qpane { max-width: none; border: 0; border-radius: 0; background: transparent; padding: 16px 16px 28px; }
+  .qpane, .solve.memo-open .qpane, .solve.exp-open .qpane, .solve.exp-open.memo-open .qpane { max-width: none; border: 0; border-radius: 0; background: transparent; padding: 16px 16px 28px; }
+  .epane { display: none !important; }
+  .solve.exp-open .epane { display: none !important; }
+  .exp-inline { display: block; }
   .mpane { display: flex; width: auto; position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 72vh; height: 72vh; border: 0; border-top: 1px solid var(--line-strong); border-radius: 16px 16px 0 0; transform: translateY(100%); transition: transform .22s ease; z-index: 30; box-shadow: 0 -8px 30px rgba(0,0,0,.18); }
   .solve.memo-open .mpane { transform: translateY(0); }
   .memo-close { display: inline-flex; }

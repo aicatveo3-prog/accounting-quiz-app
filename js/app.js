@@ -1161,7 +1161,7 @@
       '</header>' +
       '<div class="navstrip"><div class="navin"><input type="range" class="slider" id="slider" min="1" max="' + a.order.length + '" step="1" value="' + (idx + 1) + '" aria-label="문제 이동. 손잡이를 끌거나 좌우 방향키로 이동해요">' +
       '<span class="navlbl num" id="n-pos" aria-live="polite"></span></div></div>' +
-      '<div class="workspace" id="workspace"><main class="pane qpane" id="qpane" aria-live="polite"></main><aside class="pane mpane" id="mpane" aria-label="풀이 메모"></aside></div>' +
+      '<div class="workspace" id="workspace"><main class="pane qpane" id="qpane" aria-live="polite"></main><section class="pane epane" id="epane" aria-label="해설"></section><aside class="pane mpane" id="mpane" aria-label="풀이 메모"></aside></div>' +
       '</div>';
     renderAll();
     if (mode === 'solve') startTimer();
@@ -1287,15 +1287,33 @@
     if (locked) {
       var right = sel === q.answer;
       html += '<div class="explain ' + (sel == null ? '' : (right ? 'ok' : 'bad')) + '"><b>' +
-        (sel == null ? '정답은 ' + CIRC[q.answer - 1] + '번이에요' : (right ? '정답이에요' : '아쉬워요. 정답은 ' + CIRC[q.answer - 1] + '번이에요')) + '</b>' +
-        (FEATURES.explanations ? (q.explanation && q.explanationStatus === 'draft' ? '<span class="pill warn" style="margin-left:8px" title="AI가 작성한 초안이에요. 검수 전이라 틀린 내용이 있을 수 있어요.">AI 초안 · 검수 전</span>' : '') +
-          '<div class="exp-text">' + (q.explanation ? renderMd(q.explanation) : '<span class="muted">이 문제의 해설은 아직 준비 중이에요. 풀이 메모에 내 풀이를 남겨두세요.</span>') + '</div>' : '') +
-        '</div>';
+        (sel == null ? '정답은 ' + CIRC[q.answer - 1] + '번이에요' : (right ? '정답이에요' : '아쉬워요. 정답은 ' + CIRC[q.answer - 1] + '번이에요')) + '</b></div>';
+      /* 상세 해설: PC → epane (가운데 패널), 모바일 → qpane 인라인 */
+      var expContent = '';
+      if (FEATURES.explanations) {
+        expContent = (q.explanation && q.explanationStatus === 'draft' ? '<div style="margin-bottom:8px"><span class="pill warn" title="AI가 작성한 초안이에요. 검수 전이라 틀린 내용이 있을 수 있어요.">AI 초안 · 검수 전</span></div>' : '') +
+          '<div class="exp-text">' + (q.explanation ? renderMd(q.explanation) : '<span class="muted">이 문제의 해설은 아직 준비 중이에요. 풀이 메모에 내 풀이를 남겨두세요.</span>') + '</div>';
+      }
+      if (expContent) {
+        /* 모바일 인라인 폴백 (PC에서는 CSS로 숨김) */
+        html += '<div class="exp-inline">' + expContent + '</div>';
+        /* PC 전용 epane */
+        var epane = document.getElementById('epane');
+        if (epane) epane.innerHTML = '<div class="epane-inner">' + expContent + '</div>';
+      }
+      var sv = document.getElementById('solve');
+      if (sv) sv.classList.toggle('exp-open', !!expContent);
       if (view.mode === 'solve' && a.mode === 'practice') {
         html += '<div style="margin-top:10px"><button class="btn" data-act="retry-q">' + IC.repeat + '이 문제 다시 풀기</button></div>';
       } else if (view.mode === 'review') {
         html += '<div style="margin-top:10px"><button class="btn" data-act="start-single" data-exam="' + view.exam.id + '" data-no="' + q.no + '">' + IC.repeat + '이 문제 다시 풀기</button></div>';
       }
+    } else {
+      /* 아직 안 풀었으면 해설 패널 비우기 */
+      var epane2 = document.getElementById('epane');
+      if (epane2) epane2.innerHTML = '';
+      var sv2 = document.getElementById('solve');
+      if (sv2) sv2.classList.remove('exp-open');
     }
     /* 이전 · 다음: 문제 바로 아래. 이전은 왼쪽, 다음은 오른쪽 끝 */
     var first = view.idx === 0, last = view.idx === total - 1;
