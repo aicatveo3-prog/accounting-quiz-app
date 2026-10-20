@@ -218,7 +218,7 @@ button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px sol
 /* PC: 문제(왼쪽) + 해설(가운데) + 메모(오른쪽). flex 비율로 화면을 넓게 사용 */
 .workspace { display: flex; justify-content: center; align-items: flex-start; gap: 16px; padding: 22px 16px 48px; overflow-y: auto; min-height: 0; }
 .pane { min-height: 0; }
-.qpane { flex: 1 1 0; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 28px 24px; }
+.qpane { flex: 0 0 auto; width: 38%; min-width: 320px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 28px 24px; }
 .epane { display: none; flex-direction: column; flex: 1 1 0; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; }
 .epane-inner { line-height: 1.7; }
 .solve.exp-open .epane { display: flex; }
