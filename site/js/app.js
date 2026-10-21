@@ -713,9 +713,10 @@
     if (!EXAMS.length) html += '<div class="empty">등록된 기출이 없어요.</div>';
     /* 연도 내림차순(같은 해는 지방직 먼저) + 시험 구분 탭 */
     var yearOf = function (ex) { return parseInt(ex.date, 10) || 0; };
-    var seriesTabs = [['all', '전체'], ['local', '지방직'], ['national', '국가직']];
+    var seriesTabs = [['all', '전체'], ['local', '9급 지방직'], ['national', '9급 국가직'], ['national7', '7급 국가직']];
+    var seriesRank = { local: 0, national: 1, national7: 2 };
     var list = EXAMS.slice().sort(function (a, b) {
-      return yearOf(b) - yearOf(a) || (seriesOf(a) === 'local' ? 0 : 1) - (seriesOf(b) === 'local' ? 0 : 1);
+      return yearOf(b) - yearOf(a) || (seriesRank[seriesOf(a)] || 0) - (seriesRank[seriesOf(b)] || 0);
     }).filter(function (ex) { return ui.examSeries === 'all' || seriesOf(ex) === ui.examSeries; });
     if (EXAMS.some(function (ex) { return seriesOf(ex) !== 'local'; })) {
       html += '<div class="filters" role="tablist" aria-label="시험 구분">' + seriesTabs.map(function (t) {
@@ -1266,7 +1267,10 @@
       }).join('') + '</div></div>';
     }
     if (ex.kind === 'bullets') {
-      return '<div class="exhibit box"><ul class="bullets">' + ex.lines.map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('') + '</ul></div>';
+      return '<div class="exhibit box"><ul class="bullets">' + ex.lines.map(function (l) {
+        var sub = /^(－|•) /.exec(l);
+        return '<li' + (sub ? ' class="' + (sub[1] === '－' ? 'sub' : 'sub2') + '"' : '') + '>' + esc(sub ? l.slice(2) : l) + '</li>';
+      }).join('') + '</ul></div>';
     }
     if (ex.kind === 'table') {
       var h = '<div class="exhibit" style="overflow-x:auto"><table class="ledger"><thead><tr>' + ex.headers.map(function (t) { return '<th scope="col">' + esc(t) + '</th>'; }).join('') + '</tr></thead><tbody>';

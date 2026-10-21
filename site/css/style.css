@@ -269,6 +269,8 @@ button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px sol
 .kv .v { font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
 .bullets { margin: 0; padding-left: 18px; }
 .bullets li { margin: 4px 0; }
+.bullets li.sub { margin-left: 14px; list-style: '– '; }
+.bullets li.sub2 { margin-left: 28px; list-style: disc; }
 table.ledger { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line-strong); font-size: 14.5px; }
 table.ledger th { background: var(--ledger); font-weight: 600; padding: 7px 10px; border: 1px solid var(--line-strong); text-align: center; }
 table.ledger td { padding: 7px 10px; border: 1px solid var(--line); text-align: right; font-variant-numeric: tabular-nums; }
