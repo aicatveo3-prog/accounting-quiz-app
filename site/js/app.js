@@ -704,14 +704,27 @@
   }
 
   /* ───────── 기출 목록 ───────── */
+  function seriesOf(ex) { return ex.series || 'local'; }
   function renderExams() {
     var html = '<h1 class="page-title">기출 문제</h1><p class="page-sub">한 번에 한 문제씩 풀고, 풀이 메모를 남겨보세요.</p>';
     if (!storageOk) {
       html += '<div class="card" style="margin-bottom:14px;background:var(--warn-bg);border-color:transparent;color:var(--warn)">이 브라우저에서는 학습 기록을 저장할 수 없어요. 페이지를 닫으면 기록이 사라져요.</div>';
     }
     if (!EXAMS.length) html += '<div class="empty">등록된 기출이 없어요.</div>';
+    /* 연도 내림차순(같은 해는 지방직 먼저) + 시험 구분 탭 */
+    var yearOf = function (ex) { return parseInt(ex.date, 10) || 0; };
+    var seriesTabs = [['all', '전체'], ['local', '지방직'], ['national', '국가직']];
+    var list = EXAMS.slice().sort(function (a, b) {
+      return yearOf(b) - yearOf(a) || (seriesOf(a) === 'local' ? 0 : 1) - (seriesOf(b) === 'local' ? 0 : 1);
+    }).filter(function (ex) { return ui.examSeries === 'all' || seriesOf(ex) === ui.examSeries; });
+    if (EXAMS.some(function (ex) { return seriesOf(ex) !== 'local'; })) {
+      html += '<div class="filters" role="tablist" aria-label="시험 구분">' + seriesTabs.map(function (t) {
+        var n = t[0] === 'all' ? EXAMS.length : EXAMS.filter(function (ex) { return seriesOf(ex) === t[0]; }).length;
+        return '<button class="fchip' + (ui.examSeries === t[0] ? ' on' : '') + '" role="tab" aria-selected="' + (ui.examSeries === t[0]) + '" data-act="exam-series" data-f="' + t[0] + '">' + t[1] + ' ' + n + '</button>';
+      }).join('') + '</div>';
+    }
     var totalQ = 0, solvedQ = 0, resumeA = null, resumeEx = null;
-    EXAMS.forEach(function (ex) {
+    list.forEach(function (ex) {
       totalQ += ex.questions.length;
       solvedQ += Object.keys(answeredNos(ex)).length;
       var op = openAttempt(ex.id);
@@ -726,7 +739,7 @@
         (resumeA ? '<button class="btn primary" data-act="resume" data-id="' + resumeA.id + '">이어 풀기</button>' : '') + '</section>';
     }
     html += '<div class="card xlist">';
-    EXAMS.forEach(function (ex) {
+    list.forEach(function (ex) {
       var wrong = wrongNos(ex);
       var open = openAttempt(ex.id);
       var done = submittedAttempts(ex.id);
@@ -808,7 +821,7 @@
   }
 
   /* ───────── 오답노트 ───────── */
-  var ui = { wrongFilter: 'all', memoQuery: '' };
+  var ui = { wrongFilter: 'all', memoQuery: '', examSeries: 'all' };
   function dueLabel(s) {
     var diff = dayDiff(s.due, todayMidnight());
     if (diff < 0) return { text: (-diff) + '일 지남', cls: 'bad' };
@@ -1245,6 +1258,8 @@
   /* 보기(exhibit) */
   function exhibitHtml(ex) {
     if (!ex) return '';
+    if (Array.isArray(ex)) return ex.map(exhibitHtml).join('');
+    if (typeof ex === 'string') return '<div class="stem stem-after">' + esc(ex) + '</div>';
     if (ex.kind === 'kv') {
       return '<div class="exhibit box"><div class="kv">' + ex.items.map(function (it) {
         return '<div><span>' + esc(it[0]) + '</span><span class="v">' + esc(it[1]) + '</span></div>';
@@ -1256,8 +1271,10 @@
     if (ex.kind === 'table') {
       var h = '<div class="exhibit" style="overflow-x:auto"><table class="ledger"><thead><tr>' + ex.headers.map(function (t) { return '<th scope="col">' + esc(t) + '</th>'; }).join('') + '</tr></thead><tbody>';
       ex.rows.forEach(function (r) {
-        h += '<tr' + (r[0] === '합계' ? ' class="total"' : '') + '>' + r.map(function (c) {
-          return c == null ? '<td class="blank" aria-label="빈칸">빈칸</td>' : '<td>' + esc(c) + '</td>';
+        var span = r.length >= 2 ? ex.headers.length - r.length + 1 : 1;
+        h += '<tr' + (r[0] === '합계' ? ' class="total"' : '') + '>' + r.map(function (c, ci) {
+          if (c == null) return '<td class="blank" aria-label="빈칸">빈칸</td>';
+          return '<td' + (span > 1 && ci === r.length - 1 ? ' colspan="' + span + '" style="text-align:center"' : '') + '>' + esc(c) + '</td>';
         }).join('') + '</tr>';
       });
       return h + '</tbody></table></div>';
@@ -1584,6 +1601,7 @@
       }
       case 'settings': settingsModal(); break;
       case 'wrong-filter': ui.wrongFilter = t.getAttribute('data-f'); renderWrong(); break;
+      case 'exam-series': ui.examSeries = t.getAttribute('data-f'); renderExams(); break;
       case 'start-single': {
         var sEx = t.getAttribute('data-exam'), sNo = parseInt(t.getAttribute('data-no'), 10);
         guardOpen(sEx, function () { startSingle(sEx, sNo); });
