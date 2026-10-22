@@ -38,7 +38,8 @@
     gear: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>',
     play: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 5l12 7-12 7z"/></svg>',
     repeat: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l3 3-3 3M4 11V9a3 3 0 013-3h13M7 21l-3-3 3-3M20 13v2a3 3 0 01-3 3H4"/></svg>',
-    flame: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 5 5 5 10a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg>'
+    flame: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 5 5 5 10a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg>',
+    chev: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
   };
 
   /* ───────── 저장소 ───────── */
@@ -703,32 +704,69 @@
   }
 
   /* ───────── 기출 목록 ───────── */
+  function seriesOf(ex) { return ex.series || 'local'; }
   function renderExams() {
     var html = '<h1 class="page-title">기출 문제</h1><p class="page-sub">한 번에 한 문제씩 풀고, 풀이 메모를 남겨보세요.</p>';
     if (!storageOk) {
       html += '<div class="card" style="margin-bottom:14px;background:var(--warn-bg);border-color:transparent;color:var(--warn)">이 브라우저에서는 학습 기록을 저장할 수 없어요. 페이지를 닫으면 기록이 사라져요.</div>';
     }
     if (!EXAMS.length) html += '<div class="empty">등록된 기출이 없어요.</div>';
-    EXAMS.forEach(function (ex) {
+    /* 연도 내림차순(같은 해는 지방직 먼저) + 시험 구분 탭 */
+    var yearOf = function (ex) { return parseInt(ex.date, 10) || 0; };
+    var seriesTabs = [['all', '전체'], ['local', '9급 지방직'], ['national', '9급 국가직'], ['national7', '7급 국가직'], ['seoul7', '7급 서울시']];
+    var seriesRank = { local: 0, national: 1, national7: 2, seoul7: 3 };
+    var list = EXAMS.slice().sort(function (a, b) {
+      return yearOf(b) - yearOf(a) || (seriesRank[seriesOf(a)] || 0) - (seriesRank[seriesOf(b)] || 0);
+    }).filter(function (ex) { return ui.examSeries === 'all' || seriesOf(ex) === ui.examSeries; });
+    if (EXAMS.some(function (ex) { return seriesOf(ex) !== 'local'; })) {
+      html += '<div class="filters" role="tablist" aria-label="시험 구분">' + seriesTabs.map(function (t) {
+        var n = t[0] === 'all' ? EXAMS.length : EXAMS.filter(function (ex) { return seriesOf(ex) === t[0]; }).length;
+        return '<button class="fchip' + (ui.examSeries === t[0] ? ' on' : '') + '" role="tab" aria-selected="' + (ui.examSeries === t[0]) + '" data-act="exam-series" data-f="' + t[0] + '">' + t[1] + ' ' + n + '</button>';
+      }).join('') + '</div>';
+    }
+    var totalQ = 0, solvedQ = 0, resumeA = null, resumeEx = null;
+    list.forEach(function (ex) {
+      totalQ += ex.questions.length;
+      solvedQ += Object.keys(answeredNos(ex)).length;
+      var op = openAttempt(ex.id);
+      if (op && (!resumeA || (op.updatedAt || 0) > (resumeA.updatedAt || 0))) { resumeA = op; resumeEx = ex; }
+    });
+    var allPct = totalQ ? Math.round(solvedQ / totalQ * 100) : 0;
+    if (EXAMS.length) {
+      html += '<section class="card xsum" aria-label="학습 요약">' +
+        (resumeA ? '<div class="grow"><div class="sm-label">이어 풀기</div><b>' + esc(resumeEx.name) + '</b><div class="muted small">' + modeLabel(resumeA) + ' · ' + Object.keys(resumeA.answers).length + '/' + resumeA.order.length + '문항 풀이 · ' + fmtDate(resumeA.updatedAt || resumeA.startedAt) + '</div></div>' : '') +
+        '<div class="xtot' + (resumeA ? '' : ' grow') + '"><div class="sm-label">전체 진행</div><div class="xprog"><b class="num">' + solvedQ + ' / ' + totalQ + '</b>' +
+        '<span class="bar" role="img" aria-label="전체 진행 ' + allPct + '%"><i style="width:' + allPct + '%"></i></span></div></div>' +
+        (resumeA ? '<button class="btn primary" data-act="resume" data-id="' + resumeA.id + '">이어 풀기</button>' : '') + '</section>';
+    }
+    html += '<div class="card xlist">';
+    list.forEach(function (ex) {
       var wrong = wrongNos(ex);
       var open = openAttempt(ex.id);
       var done = submittedAttempts(ex.id);
       var full = done.filter(function (a) { return a.order.length === ex.questions.length; });
       var best = full.length ? Math.max.apply(null, full.map(function (a) { return grade(a, ex).score; })) : null;
-      html += '<section class="card exam-card" aria-label="' + esc(ex.name) + '">' +
-        '<div><h2>' + esc(ex.name) + '</h2><div class="muted small">' + esc(ex.subject) + '</div></div>' +
-        '<div class="meta"><span class="pill">' + ex.questions.length + '문항</span><span class="pill">' + ex.minutes + '분</span><span class="pill">' + (ex.questions.length * ex.pointsPerQuestion) + '점</span>' +
-        (best != null ? '<span class="pill ok">최고 ' + best + '점</span>' : '') + '</div>';
+      var solved = Object.keys(answeredNos(ex)).length;
+      var pct = ex.questions.length ? Math.round(solved / ex.questions.length * 100) : 0;
+      var ym = /^(\d{4})\s*(.*)$/.exec(ex.name);
+      html += '<details class="xrow"><summary>' +
+        '<span class="xyr num">' + (ym ? ym[1] : '') + '</span>' +
+        '<span class="xname"><b>' + esc(ym ? ym[2] : ex.name) + '</b><span class="meta"><span class="muted small">' + ex.questions.length + '문항 · ' + ex.minutes + '분 · ' + (ex.questions.length * ex.pointsPerQuestion) + '점</span>' +
+        (best != null ? '<span class="pill ok">최고 ' + best + '점</span>' : '') +
+        (wrong.length ? '<span class="pill bad">오답 ' + wrong.length + '</span>' : '') +
+        (open ? '<span class="pill accent">풀던 기록</span>' : '') + '</span></span>' +
+        '<span class="xprog"><span class="bar" role="img" aria-label="진행 ' + pct + '%"><i style="width:' + pct + '%"></i></span><span class="n num">' + solved + '/' + ex.questions.length + '</span></span>' +
+        '<span class="btn sm xgo">풀기' + IC.chev + '</span></summary><div class="xbody">';
       if (open) {
         var og = Object.keys(open.answers).length;
         html += '<div class="card resume"><div><b>풀던 기록이 있어요</b><div class="muted small">' + modeLabel(open) + ' · ' + og + '/' + open.order.length + '문항 풀이 · ' + fmtDate(open.updatedAt || open.startedAt) + '</div></div>' +
           '<div style="display:flex;gap:8px"><button class="btn primary" data-act="resume" data-id="' + open.id + '">이어 풀기</button><button class="btn" data-act="discard" data-id="' + open.id + '">버리기</button></div></div>';
       }
-      html += '<div><div class="section-label" style="margin-top:0">어떻게 풀어볼까요</div><div class="mode-grid">' +
+      html += '<div class="mode-grid">' +
         '<button class="mode" data-act="start" data-exam="' + ex.id + '" data-mode="practice">' + IC.pen + '<b>연습</b><span class="muted small">시간 제한 없음 · 풀고 바로 정답 확인</span></button>' +
         '<button class="mode" data-act="start" data-exam="' + ex.id + '" data-mode="exam">' + IC.clock + '<b>실전</b><span class="muted small">' + ex.minutes + '분 타이머 · 제출 후 채점</span></button>' +
         '<button class="mode" data-act="start" data-exam="' + ex.id + '" data-mode="wrong"' + (wrong.length ? '' : ' disabled') + '>' + IC.check + '<b>오답만</b><span class="muted small">' + (wrong.length ? '오답노트의 ' + wrong.length + '문제만 다시 풀기' : '틀린 문제가 생기면 열려요') + '</span></button>' +
-        '</div></div>';
+        '</div>';
       if (done.length) {
         html += '<div><div class="section-label" style="margin-top:0">최근 기록</div>';
         done.slice(-5).reverse().forEach(function (a) {
@@ -738,8 +776,9 @@
         });
         html += '</div>';
       }
-      html += '</section>';
+      html += '</div></details>';
     });
+    html += '</div>';
     html += storageNote();
     $app.innerHTML = shell(html, 'exams');
     document.title = '기출 문제 · 회계 기출 노트';
@@ -783,7 +822,7 @@
   }
 
   /* ───────── 오답노트 ───────── */
-  var ui = { wrongFilter: 'all', memoQuery: '' };
+  var ui = { wrongFilter: 'all', memoQuery: '', examSeries: 'all' };
   function dueLabel(s) {
     var diff = dayDiff(s.due, todayMidnight());
     if (diff < 0) return { text: (-diff) + '일 지남', cls: 'bad' };
@@ -1220,19 +1259,26 @@
   /* 보기(exhibit) */
   function exhibitHtml(ex) {
     if (!ex) return '';
+    if (Array.isArray(ex)) return ex.map(exhibitHtml).join('');
+    if (typeof ex === 'string') return '<div class="stem stem-after">' + esc(ex) + '</div>';
     if (ex.kind === 'kv') {
       return '<div class="exhibit box"><div class="kv">' + ex.items.map(function (it) {
         return '<div><span>' + esc(it[0]) + '</span><span class="v">' + esc(it[1]) + '</span></div>';
       }).join('') + '</div></div>';
     }
     if (ex.kind === 'bullets') {
-      return '<div class="exhibit box"><ul class="bullets">' + ex.lines.map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('') + '</ul></div>';
+      return '<div class="exhibit box"><ul class="bullets">' + ex.lines.map(function (l) {
+        var sub = /^(－|•) /.exec(l);
+        return '<li' + (sub ? ' class="' + (sub[1] === '－' ? 'sub' : 'sub2') + '"' : '') + '>' + esc(sub ? l.slice(2) : l) + '</li>';
+      }).join('') + '</ul></div>';
     }
     if (ex.kind === 'table') {
       var h = '<div class="exhibit" style="overflow-x:auto"><table class="ledger"><thead><tr>' + ex.headers.map(function (t) { return '<th scope="col">' + esc(t) + '</th>'; }).join('') + '</tr></thead><tbody>';
       ex.rows.forEach(function (r) {
-        h += '<tr' + (r[0] === '합계' ? ' class="total"' : '') + '>' + r.map(function (c) {
-          return c == null ? '<td class="blank" aria-label="빈칸">빈칸</td>' : '<td>' + esc(c) + '</td>';
+        var span = r.length >= 2 ? ex.headers.length - r.length + 1 : 1;
+        h += '<tr' + (r[0] === '합계' ? ' class="total"' : '') + '>' + r.map(function (c, ci) {
+          if (c == null) return '<td class="blank" aria-label="빈칸">빈칸</td>';
+          return '<td' + (span > 1 && ci === r.length - 1 ? ' colspan="' + span + '" style="text-align:center"' : '') + '>' + esc(c) + '</td>';
         }).join('') + '</tr>';
       });
       return h + '</tbody></table></div>';
@@ -1559,6 +1605,7 @@
       }
       case 'settings': settingsModal(); break;
       case 'wrong-filter': ui.wrongFilter = t.getAttribute('data-f'); renderWrong(); break;
+      case 'exam-series': ui.examSeries = t.getAttribute('data-f'); renderExams(); break;
       case 'start-single': {
         var sEx = t.getAttribute('data-exam'), sNo = parseInt(t.getAttribute('data-no'), 10);
         guardOpen(sEx, function () { startSingle(sEx, sNo); });
