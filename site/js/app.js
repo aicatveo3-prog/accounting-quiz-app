@@ -713,8 +713,8 @@
     if (!EXAMS.length) html += '<div class="empty">등록된 기출이 없어요.</div>';
     /* 연도 내림차순(같은 해는 지방직 먼저) + 시험 구분 탭 */
     var yearOf = function (ex) { return parseInt(ex.date, 10) || 0; };
-    var seriesTabs = [['all', '전체'], ['local', '9급 지방직'], ['national', '9급 국가직'], ['national7', '7급 국가직']];
-    var seriesRank = { local: 0, national: 1, national7: 2 };
+    var seriesTabs = [['all', '전체'], ['local', '9급 지방직'], ['national', '9급 국가직'], ['national7', '7급 국가직'], ['seoul7', '7급 서울시']];
+    var seriesRank = { local: 0, national: 1, national7: 2, seoul7: 3 };
     var list = EXAMS.slice().sort(function (a, b) {
       return yearOf(b) - yearOf(a) || (seriesRank[seriesOf(a)] || 0) - (seriesRank[seriesOf(b)] || 0);
     }).filter(function (ex) { return ui.examSeries === 'all' || seriesOf(ex) === ui.examSeries; });
