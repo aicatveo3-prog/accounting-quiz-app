@@ -14,7 +14,7 @@ window.EXAMS.push({
   notice: "본 과목 풀이 시 기업의 보고기간(회계기간)은 매년 1월 1일부터 12월 31일까지이고 기업은 계속해서 ｢한국채택국제회계기준｣을 적용해 오고 있다고 가정하며, 자료에서 제시하지 않은 사항(예: 법인세 효과 등)은 고려하지 않음",
   questions: [
     {
-      no: 1, area: "정부회계", topic: "국가·지방자치단체 재정상태표", type: "개념", answer: 4, explanation: null,
+      no: 1, area: "정부회계", topic: "국가·지방자치단체 재정상태표", type: "개념", unit: "지방자치단체 회계", answer: 4, explanation: null,
       stem: "｢국가회계기준에 관한 규칙｣ 및 ｢지방자치단체 회계기준에 관한 규칙｣에서 재정상태표에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "｢지방자치단체 회계기준에 관한 규칙｣의 재정상태표상 부채는 유동부채, 장기차입부채 및 기타비유동부채로 분류한다.",
@@ -24,7 +24,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 2, area: "재무회계", topic: "수익인식(수행의무 이행)", type: "개념", answer: 2, explanation: null,
+      no: 2, area: "재무회계", topic: "수익인식(수행의무 이행)", type: "개념", unit: "건설계약·수익인식", answer: 2, explanation: null,
       stem: "고객과의 계약에서 생기는 수익에서 수행의무의 이행에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "고객에게 약속한 재화나 용역, 즉 자산을 이전하여 수행의무를 이행할 때(또는 기간에 걸쳐 이행하는 대로) 수익을 인식한다.",
@@ -34,7 +34,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 3, area: "재무회계", topic: "충당부채", type: "개념", answer: 2, explanation: null,
+      no: 3, area: "재무회계", topic: "충당부채", type: "개념", unit: "충당부채·우발부채·복구", answer: 2, explanation: null,
       stem: "충당부채의 인식에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "과거 사건의 결과로 현재 의무가 존재하여야 하며, 현재 의무에는 법적 의무뿐만 아니라 의제 의무도 포함한다.",
@@ -44,7 +44,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 4, area: "재무회계", topic: "무형자산", type: "개념", answer: 1, explanation: null,
+      no: 4, area: "재무회계", topic: "무형자산", type: "개념", unit: "무형자산·투자부동산", answer: 1, explanation: null,
       stem: "다음 중 무형자산으로 인식하는 것만을 모두 고르면?",
       exhibit: {"kind": "bullets", "lines": ["ㄱ. 개별 취득한 특허권", "ㄴ. 내부적으로 창출한 영업권", "ㄷ. 연구단계에서 발생하는 지출", "ㄹ. 내부적으로 창출한 브랜드, 고객 목록"]},
       choices: [
@@ -55,7 +55,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 5, area: "재무회계", topic: "재고자산", type: "개념", answer: 3, explanation: null,
+      no: 5, area: "재무회계", topic: "재고자산", type: "개념", unit: "재고자산", answer: 3, explanation: null,
       stem: "재고자산에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "통상적인 영업과정에서 판매를 위하여 보유 중이거나 생산 중인 자산은 재고자산에 해당한다.",
@@ -65,7 +65,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 6, area: "재무회계", topic: "수익인식(묶음 판매 배분)", type: "계산", answer: 2, explanation: null,
+      no: 6, area: "재무회계", topic: "수익인식(묶음 판매 배분)", type: "계산", unit: "건설계약·수익인식", answer: 2, explanation: null,
       stem: "다음 자료를 이용한 (주)한국이 20×1년도 포괄손익계산서에 인식할 게임접근권에 대한 수익은? (단, 수익은 월할 계산한다)",
       exhibit: {"kind": "bullets", "lines": ["(주)한국은 게임기기를 ￦95,000에 판매하고 게임접근권(1년 접근조건)을 ￦5,000에 판매하고 있다.", "20×1년 10월 1일에 (주)한국은 100명의 고객에게 2% 할인된 가격으로 게임기기와 게임접근권을 묶음 판매하였다.", "게임기기 판매와 게임접근권 판매는 각각 구별되는 수행의무로 식별하였으며, 게임접근권 판매의 수행의무는 기간에 걸쳐 이행된다."]},
       choices: [
@@ -76,7 +76,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 7, area: "재무회계", topic: "발생주의(임대료·보험료)", type: "계산", answer: 2, explanation: null,
+      no: 7, area: "재무회계", topic: "발생주의(임대료·보험료)", type: "계산", unit: "회계순환·결산", answer: 2, explanation: null,
       stem: "다음의 거래가 20×1년도 재무상태표와 포괄손익계산서에 미치는 영향 중 바르게 연결된 것은?",
       exhibit: {"kind": "bullets", "lines": ["20×1년 1월 1일 현금 잔액은 ￦0", "20×1년 3월 1일 사무실 일부를 임대하고 1년 치 임대료 ￦360,000을 현금 수령", "20×1년 9월 1일 1년분 보험료 ￦240,000을 현금 지급"]},
       choiceHeaders: ["재무상태표", "포괄손익계산서"],
@@ -88,7 +88,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 8, area: "재무회계", topic: "현금흐름표(간접법)", type: "개념", answer: 3, explanation: null,
+      no: 8, area: "재무회계", topic: "현금흐름표(간접법)", type: "개념", unit: "현금흐름표", answer: 3, explanation: null,
       stem: "간접법에 따라 영업활동현금흐름 계산 시, 법인세비용차감전순이익에 차감하는 항목만을 모두 고르면?",
       exhibit: {"kind": "bullets", "lines": ["ㄱ. 감가상각비", "ㄴ. 재고자산 증가액", "ㄷ. 매출채권의 감소액", "ㄹ. 매입채무의 감소액"]},
       choices: [
@@ -99,7 +99,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 9, area: "정부회계", topic: "국가회계기준", type: "개념", answer: 1, explanation: null,
+      no: 9, area: "정부회계", topic: "국가회계기준", type: "개념", unit: "국가회계기준·재무제표", answer: 1, explanation: null,
       stem: "｢국가회계기준에 관한 규칙｣의 내용으로 옳은 것은?",
       choices: [
         "국가운영수익은 국가의 재정활동과 관련하여 발생하는 수익 중 국세수익과 이전수익을 제외한 수익이다.",
@@ -109,7 +109,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 10, area: "재무회계", topic: "유형자산(연수합계법)", type: "계산", answer: 1, explanation: null,
+      no: 10, area: "재무회계", topic: "유형자산(연수합계법)", type: "계산", unit: "유형자산", answer: 1, explanation: null,
       stem: "(주)한국은 20×1년 초에 취득한 기계장치를 원가모형을 적용하여 연수합계법으로 감가상각하고 있다. (주)한국은 동 기계장치의 내용연수를 4년, 잔존가치는 ￦50,000으로 추정하였다. (주)한국이 20×3년도에 인식한 감가상각비가 ￦10,000인 경우, 동 기계장치의 취득원가는? (단, 취득 이후 기계장치에 대한 손상은 없다)",
       choices: [
         "￦100,000",
@@ -119,7 +119,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 11, area: "재무회계", topic: "사채(유효이자율법)", type: "개념", answer: 3, explanation: null,
+      no: 11, area: "재무회계", topic: "사채(유효이자율법)", type: "개념", unit: "사채·복합금융상품", answer: 3, explanation: null,
       stem: "사채의 회계처리와 관련하여 사채할인발행차금을 유효이자율법에 따라 상각할 때 재무상태에 미치는 영향으로 옳은 것은? (단, 유효이자율은 0보다 크다)",
       choices: [
         "자본의 증가, 부채의 증가",
@@ -129,7 +129,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 12, area: "재무회계", topic: "손실충당금", type: "계산", answer: 4, explanation: null,
+      no: 12, area: "재무회계", topic: "손실충당금", type: "계산", unit: "금융자산·금융상품", answer: 4, explanation: null,
       stem: "20×1년 1월 1일 (주)한국의 매출채권에 대한 손실충당금 잔액은 ￦10,000이다. (주)한국은 20×1년 중 ￦20,000의 매출채권을 회수불능으로 판단하여 장부에서 제거하였다. 20×1년 말 매출채권 잔액은 ￦700,000이며, 기대신용손실은 ￦40,000으로 추정하였다. (주)한국이 20×1년도 포괄손익계산서에 인식할 손상차손은?",
       choices: [
         "￦10,000",
@@ -139,7 +139,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 13, area: "원가회계", topic: "활동기준원가계산", type: "계산", answer: 3, explanation: null,
+      no: 13, area: "원가회계", topic: "활동기준원가계산", type: "계산", unit: "원가 개념·의사결정·기타", answer: 3, explanation: null,
       stem: "(주)한국은 활동기준원가계산제도를 채택하고 있으며, 제조 활동과 관련된 자료는 다음과 같다.",
       exhibit: [{"kind": "table", "headers": ["활동", "원가동인", "최대활동량", "총원가"], "rows": [["제품준비", "제품준비 횟수", "100회", "￦200,000"], ["기계이용", "기계작업 시간", "200시간", "￦600,000"], ["검사", "검사수행 횟수", "200회", "￦400,000"]]}, "제조제품 중 하나인 제품 A와 관련된 자료가 다음과 같은 경우, 제품 A의 총원가는?", {"kind": "table", "headers": ["기초원가", "제품준비 횟수", "기계작업 시간", "검사수행 횟수"], "rows": [["￦20,000", "20회", "20시간", "10회"]]}],
       choices: [
@@ -150,7 +150,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 14, area: "원가회계", topic: "원가계산 방법", type: "개념", answer: 2, explanation: null,
+      no: 14, area: "원가회계", topic: "원가계산 방법", type: "개념", unit: "원가 개념·의사결정·기타", answer: 2, explanation: null,
       stem: "석유화학산업 등과 같이 표준화된 작업공정을 통해 한 가지 제품만을 대량생산하는 제조환경에 적합한 원가계산 방법은?",
       choices: [
         "개별원가계산",
@@ -160,7 +160,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 15, area: "재무회계", topic: "회계상 거래", type: "개념", answer: 1, explanation: null,
+      no: 15, area: "재무회계", topic: "회계상 거래", type: "개념", unit: "회계순환·결산", answer: 1, explanation: null,
       stem: "회계상 거래가 아닌 것은?",
       choices: [
         "사무실을 1개월 후에 1년간 임차하기로 임대인과 계약 체결",
@@ -170,7 +170,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 16, area: "재무회계", topic: "재무보고 개념체계", type: "개념", answer: 3, explanation: null,
+      no: 16, area: "재무회계", topic: "재무보고 개념체계", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 3, explanation: null,
       stem: "재무보고를 위한 개념체계에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "보고기업의 경제적자원 및 청구권의 성격 및 금액에 대한 정보는 이용자들이 보고기업의 재무적 강점과 약점을 식별하는 데 도움을 줄 수 있다.",
@@ -180,7 +180,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 17, area: "재무회계", topic: "결산수정분개", type: "계산", answer: 2, explanation: null,
+      no: 17, area: "재무회계", topic: "결산수정분개", type: "계산", unit: "회계순환·결산", answer: 2, explanation: null,
       stem: "다음 자료를 이용한 수정분개가 당기순이익에 미치는 영향은?",
       exhibit: {"kind": "table", "headers": ["계정과목", "수정전시산표 잔액", "수정후시산표 잔액"], "rows": [["선급비용", "￦2,000", "￦1,000"], ["미지급비용", "￦2,000", "￦3,000"], ["선수수익", "￦1,500", "￦2,500"], ["미수수익", "￦3,000", "￦4,000"]]},
       choices: [
@@ -191,7 +191,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 18, area: "재무회계", topic: "결산(집합손익 마감)", type: "개념", answer: 4, explanation: null,
+      no: 18, area: "재무회계", topic: "결산(집합손익 마감)", type: "개념", unit: "회계순환·결산", answer: 4, explanation: null,
       stem: "수익과 비용 계정을 마감 후 집합손익 계정의 잔액은 ￦100,000이다. 수익이 비용보다 큰 경우, 집합손익 계정의 마감분개로 옳은 것은?",
       choices: [
         {"journal": {"dr": [["수익", "￦100,000"]], "cr": [["집합손익", "￦100,000"]]}},
@@ -201,7 +201,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 19, area: "원가회계", topic: "제조간접원가 배부차이", type: "계산", answer: 3, explanation: null,
+      no: 19, area: "원가회계", topic: "제조간접원가 배부차이", type: "계산", unit: "개별원가·제조간접원가 배부", answer: 3, explanation: null,
       stem: "(주)한국은 정상개별원가계산제도를 채택하고 있으며, 제조간접원가를 직접노무시간으로 배부하고 있다. 20×1년도 제조간접원가와 관련된 자료는 다음과 같다. 20×1년도 제조간접원가 과소배부액이 ￦1,000인 경우, 제조간접원가 실제 발생액은?",
       exhibit: {"kind": "table", "headers": ["제조간접원가 예산", "예정 직접노무시간", "실제 직접노무시간"], "rows": [["￦10,000", "100시간", "120시간"]]},
       choices: [
@@ -212,7 +212,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 20, area: "원가회계", topic: "원가흐름(제조간접원가 역산)", type: "계산", answer: 2, explanation: null,
+      no: 20, area: "원가회계", topic: "원가흐름(제조간접원가 역산)", type: "계산", unit: "개별원가·제조간접원가 배부", answer: 2, explanation: null,
       stem: "다음 자료를 이용한 제조간접원가는?",
       exhibit: {"kind": "kv", "items": [["기초원가", "￦350,000"], ["기초재공품", "￦150,000"], ["기말재공품", "￦300,000"], ["당기제품제조원가", "￦500,000"]]},
       choices: [

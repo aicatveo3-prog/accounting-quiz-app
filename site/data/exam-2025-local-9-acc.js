@@ -12,7 +12,7 @@ window.EXAMS.push({
   notice: "본 과목 풀이 시 기업의 보고기간(회계기간)은 매년 1월 1일부터 12월 31일까지이고 기업은 계속해서 ｢한국채택국제회계기준｣을 적용해 오고 있다고 가정하며, 자료에서 제시하지 않은 사항(예: 법인세 효과 등)은 고려하지 않음",
   questions: [
     {
-      no: 1, area: "재무회계", topic: "상품 판매 분개", type: "개념", answer: 4, explanation: null,
+      no: 1, area: "재무회계", topic: "상품 판매 분개", type: "개념", unit: "재고자산", answer: 4, explanation: null,
       stem: "(주)한국이 원가 ￦60,000의 재고자산을 ￦100,000에 외상판매하였을 경우, 옳은 분개는? (단, 재고자산은 계속기록법을 적용하고 있다)",
       choices: [
         { journal: { dr: [["현금", "￦100,000"]], cr: [["매출", "￦100,000"]] } },
@@ -22,7 +22,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 2, area: "재무회계", topic: "금융자산(기타포괄손익-공정가치)", type: "개념", answer: 2, explanation: null,
+      no: 2, area: "재무회계", topic: "금융자산(기타포괄손익-공정가치)", type: "개념", unit: "금융자산·금융상품", answer: 2, explanation: null,
       stem: "(주)한국은 20×1년 초에 타 회사 주식을 취득하고 기타포괄손익-공정가치 측정 금융자산 ￦20,000,000으로 인식하였다. 20×1년 말 이 금융자산의 공정가치가 ￦25,000,000일 경우, 20×1년 말 금융자산에 대한 회계처리가 (주)한국의 재무제표에 미치는 영향으로 옳은 것은?",
       choices: [
         "당기이익 ￦5,000,000이 반영된다.",
@@ -32,7 +32,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 3, area: "재무회계", topic: "회계상 거래", type: "개념", answer: 4, explanation: null,
+      no: 3, area: "재무회계", topic: "회계상 거래", type: "개념", unit: "회계순환·결산", answer: 4, explanation: null,
       stem: "회계상 거래에 해당하지 않는 것은?",
       choices: [
         "현금 ￦100,000을 분실하였다.",
@@ -42,12 +42,12 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 4, area: "재무회계", topic: "유형자산 감가상각", type: "계산", answer: 2, explanation: null,
+      no: 4, area: "재무회계", topic: "유형자산 감가상각", type: "계산", unit: "유형자산", answer: 2, explanation: null,
       stem: "(주)한국은 20×1년 1월 1일 기계장치(원가모형 적용, 내용연수 10년, 정액법 감가상각, 잔존가치 ￦10,000,000)를 ￦100,000,000에 취득하고 즉시 사용하고 있다. 20×3년 말 (주)한국이 인식할 기계장치의 장부가액은?",
       choices: ["￦70,000,000", "￦73,000,000", "￦82,000,000", "￦100,000,000"]
     },
     {
-      no: 5, area: "재무회계", topic: "수익인식", type: "개념", answer: 3, explanation: null,
+      no: 5, area: "재무회계", topic: "수익인식", type: "개념", unit: "건설계약·수익인식", answer: 3, explanation: null,
       stem: "고객과의 계약에서 생기는 수익에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "고객과의 계약에서 식별되는 수행의무는 계약에 분명히 기재한 재화나 용역에만 한정되지 않을 수 있다.",
@@ -57,7 +57,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 6, area: "재무회계", topic: "재무보고 개념체계(수익과 비용)", type: "개념", answer: 1, explanation: null,
+      no: 6, area: "재무회계", topic: "재무보고 개념체계(수익과 비용)", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 1, explanation: null,
       stem: "재무보고를 위한 개념체계에서 수익과 비용에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "수익과 비용은 기업의 재무상태와 관련된 재무제표 요소이다.",
@@ -67,7 +67,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 7, area: "재무회계", topic: "재무보고 개념체계(질적 특성)", type: "개념", answer: 4, explanation: null,
+      no: 7, area: "재무회계", topic: "재무보고 개념체계(질적 특성)", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 4, explanation: null,
       stem: "재무보고를 위한 개념체계에서 유용한 재무정보의 질적 특성에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "중립적 서술은 재무정보의 선택이나 표시에 편의가 없는 것이다.",
@@ -77,7 +77,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 8, area: "재무회계", topic: "재고자산(선입선출법)", type: "계산", answer: 3, explanation: null,
+      no: 8, area: "재무회계", topic: "재고자산(선입선출법)", type: "계산", unit: "재고자산", answer: 3, explanation: null,
       stem: "다음은 (주)한국의 재고자산 관련 자료이다. 선입선출법을 적용할 경우, (주)한국이 재무상태표에 인식할 기말 재고액은? (단, 재고자산감모 및 평가손실은 발생하지 않았으며, 재고자산은 계속기록법에 의한다)",
       exhibit: { kind: "table", headers: ["일자", "구분", "수량", "단가"], rows: [
         ["1월 1일", "전기이월", "100개", "￦1,000"],
@@ -89,13 +89,13 @@ window.EXAMS.push({
       choices: ["￦265,000", "￦275,000", "￦350,000", "￦360,000"]
     },
     {
-      no: 9, area: "재무회계", topic: "재무비율(총자산회전율)", type: "계산", answer: 3, explanation: null,
+      no: 9, area: "재무회계", topic: "재무비율(총자산회전율)", type: "계산", unit: "재무비율 분석", answer: 3, explanation: null,
       stem: "다음 자료를 이용한 (주)한국의 당기순이익은?",
       exhibit: { kind: "kv", items: [["기초총자산", "￦400,000"], ["기말총자산", "￦200,000"], ["매출액순이익률", "20%"], ["총자산회전율(평균총자산 기준)", "5회"]] },
       choices: ["￦150,000", "￦200,000", "￦300,000", "￦350,000"]
     },
     {
-      no: 10, area: "재무회계", topic: "발생주의(선급비용)", type: "계산", answer: 1, explanation: null,
+      no: 10, area: "재무회계", topic: "발생주의(선급비용)", type: "계산", unit: "회계순환·결산", answer: 1, explanation: null,
       stem: "(주)한국은 20×1년 10월 1일에 1년 치 보험료 ￦360,000을 미리 현금 지급하고 선급보험료로 인식하였을 경우, 20×1년 기말 수정분개로 옳은 것은? (단, 기간은 월할 계산한다)",
       choices: [
         { journal: { dr: [["보험료", "￦90,000"]], cr: [["선급보험료", "￦90,000"]] } },
@@ -105,7 +105,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 11, area: "재무회계", topic: "사채", type: "계산", answer: 3, explanation: null,
+      no: 11, area: "재무회계", topic: "사채", type: "계산", unit: "사채·복합금융상품", answer: 3, explanation: null,
       stem: "다음 자료를 이용한 (주)한국이 사채발행 시 인식할 사채할인발행차금은?",
       exhibit: { kind: "bullets", lines: [
         "20×1년 초 (주)한국은 사채를 ￦9,700에 발행하였다.",
@@ -115,13 +115,13 @@ window.EXAMS.push({
       choices: ["￦100", "￦300", "￦500", "￦700"]
     },
     {
-      no: 12, area: "재무회계", topic: "자본거래", type: "개념", answer: 1, explanation: null,
+      no: 12, area: "재무회계", topic: "자본거래", type: "개념", unit: "자본·주당이익", answer: 1, explanation: null,
       stem: "자본 거래가 발행주식수와 자본금에 미치는 영향에 대한 연결로 옳지 않은 것은?",
       choiceHeaders: ["자본 거래", "발행주식수", "자본금"],
       choices: [["주식배당", "증가", "불변"], ["무상감자", "감소", "감소"], ["무상증자", "증가", "증가"], ["주식분할", "증가", "불변"]]
     },
     {
-      no: 13, area: "재무회계", topic: "결산수정(소모품)", type: "계산", answer: 1, explanation: null,
+      no: 13, area: "재무회계", topic: "결산수정(소모품)", type: "계산", unit: "회계순환·결산", answer: 1, explanation: null,
       stem: "수정전시산표의 소모품 계정에 ￦150,000이 차변 잔액으로 기입되어 있고 기말의 소모품 실제 재고액은 ￦120,000으로 확인된 경우, 소모품에 대한 결산수정분개의 영향으로 옳은 것은?",
       choices: [
         "비용은 ￦30,000 발생한다.",
@@ -131,12 +131,12 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 14, area: "재무회계", topic: "유형자산 처분(연수합계법)", type: "계산", answer: 3, explanation: null,
+      no: 14, area: "재무회계", topic: "유형자산 처분(연수합계법)", type: "계산", unit: "유형자산", answer: 3, explanation: null,
       stem: "(주)한국은 20×1년 7월 1일 영업용 차량운반구(원가모형 적용, 내용연수 5년, 연수합계법 감가상각, 잔존가치 ￦100,000)를 ￦1,000,000에 취득하여 즉시 사용하고 있다. (주)한국이 동 차량운반구를 20×2년 10월 1일 현금 ￦700,000을 받고 처분했을 경우, 20×2년도 당기순이익에 미치는 영향은? (단, 기간은 월할 계산한다)",
       choices: ["￦60,000 증가", "￦120,000 증가", "￦150,000 감소", "￦200,000 감소"]
     },
     {
-      no: 15, area: "정부회계", topic: "지방자치단체 부채", type: "개념", answer: 1, explanation: null,
+      no: 15, area: "정부회계", topic: "지방자치단체 부채", type: "개념", unit: "지방자치단체 회계", answer: 1, explanation: null,
       stem: "｢지방자치단체 회계기준에 관한 규칙｣상 부채에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "재정상태표상 부채는 유동부채, 장기차입부채, 장기충당부채 및 기타비유동부채로 분류한다.",
@@ -146,7 +146,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 16, area: "정부회계", topic: "국가·지방자치단체 자산·부채 평가", type: "개념", answer: 4, explanation: null,
+      no: 16, area: "정부회계", topic: "국가·지방자치단체 자산·부채 평가", type: "개념", unit: "지방자치단체 회계", answer: 4, explanation: null,
       stem: "｢국가회계기준에 관한 규칙｣ 및 ｢지방자치단체 회계기준에 관한 규칙｣상 자산·부채의 평가에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "｢국가회계기준에 관한 규칙｣상 투자증권은 매입가액에 부대비용을 더하고 종목별로 총평균법 등을 적용하여 산정한 가액을 취득원가로 한다.",
@@ -156,7 +156,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 17, area: "원가회계", topic: "보조부문원가 배부(단계배부법)", type: "계산", answer: 4, explanation: null,
+      no: 17, area: "원가회계", topic: "보조부문원가 배부(단계배부법)", type: "계산", unit: "보조부문원가 배부", answer: 4, explanation: null,
       stem: "(주)한국은 보조부문(S1, S2)과 제조부문(P1, P2)을 가지고 있고, 보조부문 원가들을 제조부문으로 배부한다. 다음 자료에 의하여 보조부문원가를 단계배부법으로 배부할 경우, 배부 후 제조부문 P1의 원가합계는? (단, S1을 먼저 배부한다)",
       exhibit: { kind: "table", headers: ["구분", "보조부문 S1", "보조부문 S2", "제조부문 P1", "제조부문 P2"], rows: [
         ["부문원가", "￦100,000", "￦200,000", "￦300,000", "￦400,000"],
@@ -166,7 +166,7 @@ window.EXAMS.push({
       choices: ["￦309,000", "￦400,000", "￦409,000", "￦455,000"]
     },
     {
-      no: 18, area: "원가회계", topic: "원가의 분류", type: "개념", answer: 2, explanation: null,
+      no: 18, area: "원가회계", topic: "원가의 분류", type: "개념", unit: "원가 개념·의사결정·기타", answer: 2, explanation: null,
       stem: "원가의 분류에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "기초원가와 전환(가공)원가에 공통으로 포함되는 원가는 직접노무원가이다.",
@@ -176,7 +176,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 19, area: "원가회계", topic: "종합원가계산(정상공손)", type: "계산", answer: 2, explanation: null,
+      no: 19, area: "원가회계", topic: "종합원가계산(정상공손)", type: "계산", unit: "종합원가계산", answer: 2, explanation: null,
       stem: "(주)한국은 단일제품을 대량으로 생산하고 있으며, 종합원가계산을 적용하고 있다. 원재료는 공정 초기에 투입되고 전환(가공)원가는 공정 전반에 걸쳐 균등하게 발생하며, 20×1년 3월의 생산자료는 다음과 같다.",
       exhibit: { kind: "bullets", lines: [
         "3월 초 재공품 재고는 2,000개이고 완성도는 60%이다.",
@@ -187,7 +187,7 @@ window.EXAMS.push({
       choices: ["1,500개", "1,600개", "1,700개", "1,800개"]
     },
     {
-      no: 20, area: "원가회계", topic: "매출원가 계산", type: "계산", answer: 3, explanation: null,
+      no: 20, area: "원가회계", topic: "매출원가 계산", type: "계산", unit: "원가 개념·의사결정·기타", answer: 3, explanation: null,
       stem: "다음은 (주)한국의 20×1년 원가자료이다. 20×1년 중 기초원가는 ￦30,000이고, 전환(가공)원가가 직접재료원가의 50%이며, 제조간접원가는 ￦6,000이다. (주)한국의 20×1년 매출원가는?",
       exhibit: { kind: "table", headers: ["구분", "기초", "기말"], rows: [
         ["재공품", "￦3,500", "￦2,500"],

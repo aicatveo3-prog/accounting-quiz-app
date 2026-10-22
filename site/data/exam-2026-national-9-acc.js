@@ -14,7 +14,7 @@ window.EXAMS.push({
   notice: "본 과목 풀이 시 기업의 보고기간(회계기간)은 매년 1월 1일부터 12월 31일까지이고 기업은 계속해서 ｢한국채택국제회계기준｣을 적용해 오고 있다고 가정하며, 자료에서 제시하지 않은 사항(예: 법인세 효과 등)은 고려하지 않음",
   questions: [
     {
-      no: 1, area: "재무회계", topic: "재무보고 개념체계(질적 특성)", type: "개념", answer: 4, explanation: null,
+      no: 1, area: "재무회계", topic: "재무보고 개념체계(질적 특성)", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 4, explanation: null,
       stem: "(가) ~ (다)에 들어갈 말을 A ~ C에서 바르게 연결한 것은?",
       exhibit: {"kind": "bullets", "lines": ["(가) 은 의사결정에 영향을 미칠 수 있도록 의사결정자가 정보를 제때에 이용가능하게 하는 것을 의미한다.", "(나) 은 합리적인 판단력이 있고 독립적인 서로 다른 관찰자가 어떤 서술이 표현충실성에 있어, 비록 반드시 완전히 의견이 일치하지는 않더라도, 합의에 이를 수 있다는 것을 의미한다.", "(다) 은 이용자들이 항목 간의 유사점과 차이점을 식별하고 이해할 수 있게 하는 질적특성이다.", "A. 비교가능성   B. 검증가능성   C. 적시성"]},
       choiceHeaders: ["(가)", "(나)", "(다)"],
@@ -26,7 +26,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 2, area: "재무회계", topic: "발생주의(미지급급여)", type: "계산", answer: 3, explanation: null,
+      no: 2, area: "재무회계", topic: "발생주의(미지급급여)", type: "계산", unit: "회계순환·결산", answer: 3, explanation: null,
       stem: "당기에 현금으로 지급한 급여는 ￦200,000이고, 비용으로 인식한 급여는 ￦150,000이다. 기말 미지급급여가 ￦120,000일 경우, 기초 미지급급여는?",
       choices: [
         "￦130,000",
@@ -36,7 +36,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 3, area: "재무회계", topic: "자본(무상증자·현금배당)", type: "계산", answer: 1, explanation: null,
+      no: 3, area: "재무회계", topic: "자본(무상증자·현금배당)", type: "계산", unit: "자본·주당이익", answer: 1, explanation: null,
       stem: "(주)한국의 기초 자산과 부채는 각각 ￦30,000, ￦10,000이며, 기말 자산과 부채는 각각 ￦50,000, ￦20,000이다. (주)한국은 기중에 무상증자를 실시하고, 현금배당을 선언 및 지급하였다. 당기순이익이 ￦12,000일 때, (주)한국이 기중에 지급한 현금배당은?",
       choices: [
         "￦2,000",
@@ -46,7 +46,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 4, area: "재무회계", topic: "재고자산", type: "개념", answer: 2, explanation: null,
+      no: 4, area: "재무회계", topic: "재고자산", type: "개념", unit: "재고자산", answer: 2, explanation: null,
       stem: "재고자산에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "생산에 사용될 원재료는 재고자산에 해당한다.",
@@ -56,7 +56,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 5, area: "재무회계", topic: "자본거래", type: "개념", answer: 2, explanation: null,
+      no: 5, area: "재무회계", topic: "자본거래", type: "개념", unit: "자본·주당이익", answer: 2, explanation: null,
       stem: "다음의 결과를 모두 충족하는 거래는?",
       exhibit: {"kind": "bullets", "lines": ["발행주식수가 증가한다.", "자본금이 증가한다.", "이익잉여금이 감소한다."]},
       choices: [
@@ -67,7 +67,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 6, area: "원가회계", topic: "당기제품제조원가", type: "계산", answer: 1, explanation: null,
+      no: 6, area: "원가회계", topic: "당기제품제조원가", type: "계산", unit: "원가 개념·의사결정·기타", answer: 1, explanation: null,
       stem: "다음의 원가자료를 이용한 당기제품제조원가는?",
       exhibit: {"kind": "kv", "items": [["직접재료원가(기초)", "￦200"], ["직접재료원가(기말)", "￦100"], ["직접재료 매입액", "￦400"], ["직접노무원가", "￦500"], ["감가상각비-본사건물", "￦100"], ["감가상각비-공장설비", "￦50"], ["재공품재고(기초)", "￦1,500"], ["기타 제조간접원가", "￦300"], ["재공품재고(기말)", "￦1,000"]]},
       choices: [
@@ -78,7 +78,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 7, area: "원가회계", topic: "CVP분석(목표이익)", type: "계산", answer: 4, explanation: null,
+      no: 7, area: "원가회계", topic: "CVP분석(목표이익)", type: "계산", unit: "CVP·손익분기점", answer: 4, explanation: null,
       stem: "(주)한국은 제품 단위당 판매가격 ￦1,000, 단위당 변동원가 ￦800인 단일 제품을 생산·판매하고 있다. 총고정원가는 생산·판매량에 따라 변동하며 이와 관련된 자료는 다음과 같다.",
       exhibit: {"kind": "table", "headers": ["생산·판매량", "총고정원가"], "rows": [["2,000개 이하", "￦360,000"], ["2,000개 초과", "￦440,000"]]},
       stemAfter: "(주)한국이 ￦60,000의 목표이익을 얻기 위한 생산·판매량은? (단, 법인세는 없는 것으로 가정한다)",
@@ -90,7 +90,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 8, area: "재무회계", topic: "재무제표 표시", type: "개념", answer: 4, explanation: null,
+      no: 8, area: "재무회계", topic: "재무제표 표시", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 4, explanation: null,
       stem: "재무제표 표시에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "보고기간 종료일을 변경한 경우가 아니라면, 전체 재무제표(비교정보를 포함)는 적어도 1년마다 작성한다.",
@@ -100,7 +100,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 9, area: "재무회계", topic: "장부마감", type: "개념", answer: 4, explanation: null,
+      no: 9, area: "재무회계", topic: "장부마감", type: "개념", unit: "회계순환·결산", answer: 4, explanation: null,
       stem: "다음은 장부마감 전 원장의 매출채권 계정과 소모품비 계정이다. 장부마감에 대한 설명으로 옳지 않은 것은?",
       exhibit: {"kind": "table", "headers": ["계정", "차/대", "상대 계정", "금액"], "rows": [["매출채권", "차변", "기초", "6,000"], ["", "차변", "매출", "50,000"], ["", "대변", "현금", "42,000"], ["소모품비", "차변", "현금", "10,000"], ["", "대변", "소모품", "8,000"]]},
       choices: [
@@ -111,7 +111,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 10, area: "재무회계", topic: "포괄손익(자본 변동)", type: "계산", answer: 2, explanation: null,
+      no: 10, area: "재무회계", topic: "포괄손익(자본 변동)", type: "계산", unit: "자본·주당이익", answer: 2, explanation: null,
       stem: "미처분이익잉여금과 기타포괄손익누계액이 다음과 같을 때, 당기순손익과 당기포괄손익은? (단, 소유주와의 거래로 인한 자본 변동과 이익잉여금 관련 이입, 처분 및 대체는 없다)",
       exhibit: {"kind": "table", "headers": ["계정과목", "기초", "기말"], "rows": [["미처분이익잉여금", "￦500,000", "￦900,000"], ["기타포괄손익누계액", "￦400,000", "￦300,000"]]},
       choices: [
@@ -122,7 +122,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 11, area: "재무회계", topic: "유형자산 손상·처분", type: "계산", answer: 1, explanation: null,
+      no: 11, area: "재무회계", topic: "유형자산 손상·처분", type: "계산", unit: "유형자산", answer: 1, explanation: null,
       stem: "(주)한국은 20×1년 1월 1일 건물을 ￦400,000(원가모형 적용, 내용연수 4년, 잔존가치 ￦0, 정액법, 월할상각)에 취득하여 사용하기 시작하였다. (주)한국은 20×1년 말 동 건물의 회수가능액을 ￦200,000으로 추정하였으며, 20×2년 10월 1일 동 건물을 ￦200,000에 처분하였다. 동 건물에 대한 회계처리가 20×2년 당기순이익에 미치는 영향은?",
       choices: [
         "￦0",
@@ -132,7 +132,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 12, area: "재무회계", topic: "회계정책·회계추정치 변경", type: "개념", answer: 4, explanation: null,
+      no: 12, area: "재무회계", topic: "회계정책·회계추정치 변경", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 4, explanation: null,
       stem: "회계정책, 회계추정치 변경에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "측정기준의 변경은 회계정책의 변경에 해당한다.",
@@ -142,7 +142,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 13, area: "재무회계", topic: "재고자산(매출원가 역산)", type: "계산", answer: 2, explanation: null,
+      no: 13, area: "재무회계", topic: "재고자산(매출원가 역산)", type: "계산", unit: "재고자산", answer: 2, explanation: null,
       stem: "다음은 (주)한국의 재무 자료이다. 당기 공급자에 대한 현금유출이 ￦150,000일 경우, 당기 매출원가는?",
       exhibit: {"kind": "table", "headers": ["구분", "기초", "기말"], "rows": [["재고자산", "￦15,000", "￦21,000"], ["선급금", "￦7,000", "￦15,000"], ["매입채무", "￦6,000", "￦10,000"]]},
       choices: [
@@ -153,7 +153,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 14, area: "재무회계", topic: "금융자산(당기손익-공정가치)", type: "계산", answer: 3, explanation: null,
+      no: 14, area: "재무회계", topic: "금융자산(당기손익-공정가치)", type: "계산", unit: "금융자산·금융상품", answer: 3, explanation: null,
       stem: "다음 (주)한국의 20×1년 A주식(당기손익-공정가치 측정 금융자산) 관련 거래에 대한 회계처리가 당기순이익에 미치는 영향은?",
       exhibit: {"kind": "bullets", "lines": ["4월 1일 처음으로 A주식 100주를 주당 ￦5,000에 매입하고, 거래수수료와 함께 ￦505,000을 현금으로 지급하였다.", "9월 1일 A주식 50주를 주당 ￦6,000에 매도하였다.", "결산일 현재 A주식의 주당 공정가치는 ￦7,000이다."]},
       choices: [
@@ -164,7 +164,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 15, area: "재무회계", topic: "충당부채", type: "개념", answer: 2, explanation: null,
+      no: 15, area: "재무회계", topic: "충당부채", type: "개념", unit: "충당부채·우발부채·복구", answer: 2, explanation: null,
       stem: "당기에 충당부채를 인식해야 하는 사례로 옳은 것만을 모두 고르면? (단, 모든 사례에서 예상되는 유출금액을 신뢰성 있게 추정할 수 있다고 가정한다)",
       exhibit: {"kind": "bullets", "lines": ["ㄱ. 당기에 취득한 항공기를 법률에 따라 취득 후 3년에 한 번씩 정밀하게 정비하여야 한다.", "ㄴ. 기술적 이유로 내벽을 5년마다 교체해야 할 필요가 있는 용광로가 있다. 당기 말에 이 내벽은 3년 동안 사용되었다.", "ㄷ. 당기에 석유사업을 운영하면서 오염을 유발하였다. 석유사업 운영에서 유발한 모든 오염을 정화한다는 환경 방침을 널리 발표하였으며, 그 방침을 준수한 사실이 있다."]},
       choices: [
@@ -175,7 +175,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 16, area: "재무회계", topic: "금융자산(기타포괄손익-공정가치 사채)", type: "개념", answer: 3, explanation: null,
+      no: 16, area: "재무회계", topic: "금융자산(기타포괄손익-공정가치 사채)", type: "개념", unit: "금융자산·금융상품", answer: 3, explanation: null,
       stem: "(주)한국이 취득한 A사채에 대한 설명으로 옳지 않은 것은?",
       exhibit: {"kind": "bullets", "lines": ["(주)한국은 20×1년 초에 A사채를 공정가치 ￦100,000에 취득하고, 거래원가 ￦1,000을 지급하였으며, 계약상 현금흐름 특성과 사업모형을 고려하여 기타포괄손익-공정가치 측정 금융자산으로 분류하였다. 20×1년 말 A사채의 공정가치는 ￦100,000이다."]},
       choices: [
@@ -186,7 +186,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 17, area: "정부회계", topic: "지방자치단체 자산 인식·평가", type: "개념", answer: 2, explanation: null,
+      no: 17, area: "정부회계", topic: "지방자치단체 자산 인식·평가", type: "개념", unit: "지방자치단체 회계", answer: 2, explanation: null,
       stem: "｢지방자치단체 회계기준에 관한 규칙｣상 자산의 인식과 평가에 대한 설명으로 옳은 것은?",
       choices: [
         "사회기반시설 중 유지보수를 통하여 현상이 유지되는 도로, 도시철도, 하천부속시설 등은 감가상각 대상에서 제외할 수 있으며, 유지보수에 투입되는 비용과 감가상각을 하지 아니한 이유를 주석으로 공시하되, 사회기반시설에 대한 사용수익권은 해당 자산에서 차감하지 않는다.",
@@ -196,7 +196,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 18, area: "정부회계", topic: "국가 비교환수익 인식", type: "개념", answer: 4, explanation: null,
+      no: 18, area: "정부회계", topic: "국가 비교환수익 인식", type: "개념", unit: "국가회계기준·재무제표", answer: 4, explanation: null,
       stem: "｢국가회계기준에 관한 규칙｣상 비교환수익의 수익 유형에 따른 세부 인식기준의 내용으로 옳지 않은 것은?",
       choices: [
         "정부가 부과하는 방식의 국세는 국가가 고지하는 때에 수익으로 인식",
@@ -206,7 +206,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 19, area: "원가회계", topic: "정상원가계산", type: "개념", answer: 3, explanation: null,
+      no: 19, area: "원가회계", topic: "정상원가계산", type: "개념", unit: "개별원가·제조간접원가 배부", answer: 3, explanation: null,
       stem: "정상원가계산(Normal Costing)에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "제조간접원가 예정배부율은 예상 총제조간접원가를 예상 총배부기준량으로 나누어 계산한다.",
@@ -216,7 +216,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 20, area: "원가회계", topic: "종합원가계산(선입선출법)", type: "계산", answer: 1, explanation: null,
+      no: 20, area: "원가회계", topic: "종합원가계산(선입선출법)", type: "계산", unit: "종합원가계산", answer: 1, explanation: null,
       stem: "(주)한국은 종합원가계산을 사용하며 선입선출법을 적용하고 있다. 직접재료는 공정 초기에 전량 투입되며, 가공원가는 공정전반에 걸쳐 균등하게 발생한다. (주)한국의 생산 관련 자료가 다음과 같을 때 □에 들어갈 값은? (단, 공손과 감손은 없다)",
       exhibit: {"kind": "table", "headers": ["구분", "수량"], "rows": [["기초재공품", "500단위 (가공원가 완성도 □)"], ["당기착수량", "800단위"], ["당기완성량", "900단위"], ["기말재공품", "400단위 (가공원가 완성도 25%)"], ["가공원가 완성품환산량", "900단위"]]},
       choices: [

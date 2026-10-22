@@ -14,7 +14,7 @@ window.EXAMS.push({
   notice: "본 과목 풀이 시 기업의 보고기간(회계기간)은 매년 1월 1일부터 12월 31일까지이고 기업은 계속해서 ｢한국채택국제회계기준｣을 적용해 오고 있다고 가정하며, 자료에서 제시하지 않은 사항(예: 법인세 효과 등)은 고려하지 않음",
   questions: [
     {
-      no: 1, area: "재무회계", topic: "결산수정(미수이자 누락)", type: "개념", answer: 2, explanation: null,
+      no: 1, area: "재무회계", topic: "결산수정(미수이자 누락)", type: "개념", unit: "회계순환·결산", answer: 2, explanation: null,
       stem: "20×1년 4월 1일 (주)한국은 1년 만기 정기예금(연 이자율 6%)에 현금을 예치하였으며, 만기일에 원금과 이자를 수취한다. (주)한국이 결산일에 이자에 대한 회계처리를 누락한 경우, 20×1년 말 재무제표에 미치는 영향으로 옳은 것은?",
       choices: [
         "부채에 영향은 없고, 당기순이익이 과대계상된다.",
@@ -24,7 +24,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 2, area: "재무회계", topic: "재무제표 표시", type: "개념", answer: 4, explanation: null,
+      no: 2, area: "재무회계", topic: "재무제표 표시", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 4, explanation: null,
       stem: "재무제표 표시에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "경영진은 재무제표를 작성할 때 계속기업으로서의 존속가능성을 평가해야 한다.",
@@ -34,7 +34,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 3, area: "재무회계", topic: "선수수익", type: "계산", answer: 1, explanation: null,
+      no: 3, area: "재무회계", topic: "선수수익", type: "계산", unit: "회계순환·결산", answer: 1, explanation: null,
       stem: "(주)한국의 재무상태표에 계상된 기초 선수임대료는 ￦16,000이고 기말 선수임대료는 ￦24,000이다. 당기에 현금으로 수취한 임대료가 ￦50,000인 경우, 당기 임대료수익은?",
       choices: [
         "￦42,000",
@@ -44,7 +44,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 4, area: "재무회계", topic: "사채", type: "개념", answer: 4, explanation: null,
+      no: 4, area: "재무회계", topic: "사채", type: "개념", unit: "사채·복합금융상품", answer: 4, explanation: null,
       stem: "사채에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "사채발행 시 시장이자율이 액면이자율보다 높은 경우 할인발행된다.",
@@ -54,7 +54,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 5, area: "재무회계", topic: "무형자산", type: "개념", answer: 1, explanation: null,
+      no: 5, area: "재무회계", topic: "무형자산", type: "개념", unit: "무형자산·투자부동산", answer: 1, explanation: null,
       stem: "무형자산에 대한 설명으로 옳은 것은?",
       choices: [
         "무형자산의 회계처리는 내용연수에 따라 다르다. 내용연수가 유한한 무형자산은 상각하고, 내용연수가 비한정인 무형자산은 상각하지 아니한다.",
@@ -64,7 +64,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 6, area: "재무회계", topic: "재무보고 개념체계(측정)", type: "개념", answer: 3, explanation: null,
+      no: 6, area: "재무회계", topic: "재무보고 개념체계(측정)", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 3, explanation: null,
       stem: "재무제표 요소의 측정에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "역사적 원가 측정치는 적어도 부분적으로 자산, 부채 및 관련 수익과 비용을 발생시키는 거래나 그 밖의 사건의 가격에서 도출된 정보를 사용하여 자산, 부채 및 관련 수익과 비용에 관한 화폐적 정보를 제공한다.",
@@ -74,7 +74,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 7, area: "재무회계", topic: "재무제표 표시", type: "개념", answer: 4, explanation: null,
+      no: 7, area: "재무회계", topic: "재무제표 표시", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 4, explanation: null,
       stem: "재무상태표와 포괄손익계산서에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "기업이 재무상태표에 유동자산과 비유동자산, 그리고 유동부채와 비유동부채로 구분하여 표시하는 경우, 이연법인세자산(부채)은 유동자산(부채)으로 분류하지 아니한다.",
@@ -84,7 +84,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 8, area: "재무회계", topic: "재고자산", type: "개념", answer: 3, explanation: null,
+      no: 8, area: "재무회계", topic: "재고자산", type: "개념", unit: "재고자산", answer: 3, explanation: null,
       stem: "재고자산에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "재고자산은 취득원가와 순실현가능가치 중 낮은 금액으로 측정하고, 취득원가는 매입원가, 전환원가 및 재고자산을 현재의 장소에 현재의 상태로 이르게 하는 데 발생한 기타 원가 모두를 포함한다.",
@@ -94,7 +94,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 9, area: "재무회계", topic: "유형자산", type: "개념", answer: 2, explanation: null,
+      no: 9, area: "재무회계", topic: "유형자산", type: "개념", unit: "유형자산", answer: 2, explanation: null,
       stem: "유형자산에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "유형자산의 일상적인 수선·유지와 관련하여 발생하는 원가는 해당 유형자산의 장부금액에 포함하여 인식하지 아니한다.",
@@ -104,7 +104,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 10, area: "재무회계", topic: "자본(개념체계)", type: "개념", answer: 4, explanation: null,
+      no: 10, area: "재무회계", topic: "자본(개념체계)", type: "개념", unit: "개념체계·재무제표 표시·회계변경", answer: 4, explanation: null,
       stem: "자본에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "기업의 자산에서 모든 부채를 차감한 후의 잔여지분이다.",
@@ -114,7 +114,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 11, area: "재무회계", topic: "받을어음 할인", type: "계산", answer: 2, explanation: null,
+      no: 11, area: "재무회계", topic: "받을어음 할인", type: "계산", unit: "금융자산·금융상품", answer: 2, explanation: null,
       stem: "20×1년 초 (주)한국은 거래처에 상품을 판매하고 액면금액 ￦100,000인 무이자부어음(6개월 만기)을 수취하였다. (주)한국은 3개월간 해당 어음을 보유한 후 거래은행에 연 10%로 할인받았다. (주)한국이 받을어음 소유에 따른 위험과 보상의 대부분을 거래은행에 이전하였다면 받을어음 할인 시점에 인식할 매출채권처분손실은? (단, 이자는 월할 계산한다)",
       choices: [
         "￦0",
@@ -124,7 +124,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 12, area: "재무회계", topic: "수익인식(계약 식별)", type: "개념", answer: 2, explanation: null,
+      no: 12, area: "재무회계", topic: "수익인식(계약 식별)", type: "개념", unit: "건설계약·수익인식", answer: 2, explanation: null,
       stem: "'고객과의 계약에서 생기는 수익'에서 계약의 식별기준으로 옳지 않은 것은?",
       choices: [
         "계약 당사자들이 계약을 승인하고 각자의 의무를 수행하기로 확약한다.",
@@ -134,7 +134,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 13, area: "재무회계", topic: "매입채무 현금지급액", type: "계산", answer: 1, explanation: null,
+      no: 13, area: "재무회계", topic: "매입채무 현금지급액", type: "계산", unit: "재고자산", answer: 1, explanation: null,
       stem: "다음 자료를 이용한 당기 매입채무 현금지급액은?",
       exhibit: {"kind": "kv", "items": [["당기 매출액", "￦200"], ["기초 상품재고액", "￦30"], ["기말 상품재고액", "￦20"], ["기초 매입채무", "￦50"], ["기말 매입채무", "￦60"], ["매출총이익률", "20%"], ["당기 매입액 중 외상매입 비율", "60%"]]},
       choices: [
@@ -145,7 +145,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 14, area: "원가회계", topic: "종합원가계산(평균법)", type: "계산", answer: 1, explanation: null,
+      no: 14, area: "원가회계", topic: "종합원가계산(평균법)", type: "계산", unit: "종합원가계산", answer: 1, explanation: null,
       stem: "(주)한국은 종합원가계산제도를 채택하고 있으며, 가중평균법을 적용하고 있다. 다음의 자료를 이용한 완성품원가는?",
       exhibit: {"kind": "bullets", "lines": ["기초 재공품 수량: 300단위(완성도: 직접재료원가 100%, 가공원가 50%)", "기초 재공품 원가: 직접재료원가 ￦5,000, 가공원가 ￦4,000", "당기 착수량: 2,200단위", "당기 투입원가: 직접재료원가 ￦20,000, 가공원가 ￦40,000", "기말 재공품 수량: 500단위(완성도: 직접재료원가 100%, 가공원가 40%)", "직접재료는 생산 착수 시에 투입되며, 가공원가는 공정 전반에 걸쳐 균일하게 발생한다."]},
       choices: [
@@ -156,7 +156,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 15, area: "원가회계", topic: "CVP분석(복수제품)", type: "계산", answer: 2, explanation: null,
+      no: 15, area: "원가회계", topic: "CVP분석(복수제품)", type: "계산", unit: "CVP·손익분기점", answer: 2, explanation: null,
       stem: "(주)한국은 A제품과 B제품을 생산·판매하고 있다. 20×1년도 연간 고정원가 총액이 ￦3,000이고, 두 제품에 대한 자료가 다음과 같을 때, 연간손익분기점에서 A제품의 판매수량은? (단, 매출배합은 항상 일정하게 유지된다)",
       exhibit: {"kind": "table", "headers": ["구분", "A제품", "B제품"], "rows": [["판매단가", "￦90", "￦140"], ["단위당변동원가", "￦70", "￦100"], ["판매량", "80개", "20개"]]},
       choices: [
@@ -167,7 +167,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 16, area: "원가회계", topic: "변동원가계산", type: "개념", answer: 2, explanation: null,
+      no: 16, area: "원가회계", topic: "변동원가계산", type: "개념", unit: "변동·전부·초변동원가계산", answer: 2, explanation: null,
       stem: "변동원가계산에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "의사결정을 위한 내부보고목적으로 사용할 때 장점이 있다.",
@@ -177,7 +177,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 17, area: "원가회계", topic: "원가의 개념", type: "개념", answer: 3, explanation: null,
+      no: 17, area: "원가회계", topic: "원가의 개념", type: "개념", unit: "원가 개념·의사결정·기타", answer: 3, explanation: null,
       stem: "원가에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "매몰원가란 이미 발생한 과거원가로, 현재 또는 미래의 의사결정에는 영향을 미치지 못하는 원가이다.",
@@ -187,7 +187,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 18, area: "정부회계", topic: "중앙관서 재정운영표", type: "계산", answer: 3, explanation: null,
+      no: 18, area: "정부회계", topic: "중앙관서 재정운영표", type: "계산", unit: "국가회계기준·재무제표", answer: 3, explanation: null,
       stem: "다음은 중앙관서 A의 기업특별회계(사업형회계) 프로그램 관련 자료이다. 중앙관서 A의 재정운영표에 대한 설명으로 옳지 않은 것은?",
       exhibit: ["세출 (단위: ￦)", {"kind": "table", "headers": ["프로그램/단위사업", "목", "재무계정과목", "금액", "비고"], "rows": [["물자 및 시설조달", "연구개발비", "연구개발비", "30,000", "프로그램총원가"], ["물자 및 시설조달", "-", "감가상각비", "1,000", "프로그램총원가"], ["전자조달운영", "인건비", "인건비", "500", "프로그램총원가"], ["-", "-", "감가상각비", "300", "비배분비용"], ["-", "-", "자산처분손실", "200", "비배분비용"], ["조달행정지원", "인건비", "인건비", "40,000", "행정운영성경비"]]}, "세입", {"kind": "table", "headers": ["세입(목)", "재무계정과목", "금액", "관련 프로그램", "비고"], "rows": [["내자구매사업수입", "재화및용역제공수익", "20,000", "물자 및 시설조달", "프로그램수익"], ["토지대여료", "재화및용역제공수익", "1,000", "-", "비배분수익"], ["위약금", "제재금수익", "1,000", "-", "비교환수익"]]}],
       choices: [
@@ -198,7 +198,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 19, area: "정부회계", topic: "국가회계기준", type: "개념", answer: 4, explanation: null,
+      no: 19, area: "정부회계", topic: "국가회계기준", type: "개념", unit: "국가회계기준·재무제표", answer: 4, explanation: null,
       stem: "｢국가회계기준에 관한 규칙｣에 대한 설명으로 옳지 않은 것은?",
       choices: [
         "기타 유동자산은 미수수익, 선급금, 선급비용 및 재고자산 등을 말한다.",
@@ -208,7 +208,7 @@ window.EXAMS.push({
       ]
     },
     {
-      no: 20, area: "재무회계", topic: "재무비율(회전율)", type: "계산", answer: 3, explanation: null,
+      no: 20, area: "재무회계", topic: "재무비율(회전율)", type: "계산", unit: "재무비율 분석", answer: 3, explanation: null,
       stem: "다음 자료를 이용한 매출총이익은? (단, 회전율 계산 시 기초와 기말의 평균값을 이용한다)",
       exhibit: {"kind": "kv", "items": [["기초 매출채권", "￦450"], ["기말 매출채권", "￦550"], ["기초 재고자산", "￦360"], ["기말 재고자산", "￦440"], ["매출채권회전율", "5회"], ["재고자산회전율", "4회"]]},
       choices: [
